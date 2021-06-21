@@ -1,0 +1,3 @@
+setopt noincappendhistory
+setopt nosharehistory
+
