@@ -1,0 +1,71 @@
+[alias]
+    b = branch
+    l = log
+    st = status
+    stat = status
+    ci = commit
+    co = checkout
+    chl = show HEAD@{upstream}..HEAD
+    chr = show HEAD..HEAD@{upstream}
+    lgd = log --decorate
+    shd = show --decorate
+    root = rev-parse --show-toplevel
+    releases = tag -l 'QARELEASE-*' --contains
+    unstage = reset HEAD --
+    mychanges = log --cherry origin/HEAD..HEAD
+    mychangedfiles = whatchanged origin/HEAD..HEAD
+    parent = config --get remote.origin.url
+    d = difftool
+    cbr = rev-parse --abbrev-ref HEAD
+    csha = rev-parse HEAD
+    vimdiff = difftool -t nvimdiff
+    showtool = "!showci () { if [ -z ${1} ]; then p1=$(git rev-parse HEAD); p2=$(git rev-parse HEAD~1); elif [ -z ${2} ]; then p1=$(git rev-parse HEAD); p2=$(git rev-parse $1); else p1=$(git rev-parse $2); p2=$(git rev-parse $1); fi; git difftool $p2 $p1; }; showci"
+[checkout]
+    defaultRemote = origin
+[color]
+    ui = auto
+[color "branch"]
+    current = yellow bold
+    local = green bold
+    remote = cyan bold
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+[color "status"]
+    added = green bold
+    changed = yellow bold
+    untracked = red bold
+[core]
+    editor = "nvim"
+    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    excludesfile = ~/.gitignore
+[diff]
+    tool = nvimdiff
+[difftool]
+    prompt = false
+    trustExitCode = true
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[gc]
+    pruneExpire = 1.days.ago
+[help]
+    autocorrect = -1
+[log]
+    abbrevCommit = true
+    decorate = true
+[merge]
+    tool = nvimdiff
+    renamelimit = 5000
+[push]
+    default = current
+[user]
+    name = Naveen Tiwari
+    email = naveent@synopsys.com
+[mergetool]
+    trustExitCode = true
+    prompt = false
+[pull]
+	rebase = false
